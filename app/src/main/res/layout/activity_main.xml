@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="3"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/choseImageButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.30"
+        android:text="Chose Image"
+        android:textSize="17sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:hint="Enter Image Name "
+        android:textSize="17sp"
+        android:id="@+id/imageNameEditTextIdId"
+        android:layout_weight="0.30"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:id="@+id/imageViewId"
+        android:text="Chose Image"
+        android:layout_weight="1.8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_weight=".17"
+        android:id="@+id/progressbarId"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:id="@+id/saveImageButtonId"
+        android:text="Save Image"
+        android:layout_weight="0.30"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:id="@+id/displayImageButtonId"
+        android:text="Display Image"
+        android:layout_weight="0.30"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</LinearLayout>
