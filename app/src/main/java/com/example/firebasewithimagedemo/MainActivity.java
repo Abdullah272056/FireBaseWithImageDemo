@@ -57,14 +57,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
     }
     }
-
+    //create openImageFileChooser for all image file finding or image file accessing
     private void openImageFileChooser() {
         Intent intent =new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent,IMAGE_REQUEST);
+
     }
 
+    // call onActivityResult override method  for chooser image get and
+    // come back with image and load image into imageView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
