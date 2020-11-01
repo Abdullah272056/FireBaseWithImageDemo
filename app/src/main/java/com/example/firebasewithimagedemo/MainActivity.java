@@ -1,7 +1,9 @@
 package com.example.firebasewithimagedemo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +12,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button chooseButton,saveButton,displayButton;
     ProgressBar progressBar;
     EditText imageNameExitText;
     ImageView imageView;
     private Uri imageUri;
+    private static final  int IMAGE_REQUEST=1;
+    // request.auth != null
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
     switch (v.getId()){
         case R.id.chooseImageButtonId:
-
+            openImageFileChooser();
             break;
         case R.id.saveImageButtonId:
 
@@ -51,4 +57,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
     }
     }
+
+    private void openImageFileChooser() {
+        Intent intent =new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,IMAGE_REQUEST);
+    }
+
+  
 }
