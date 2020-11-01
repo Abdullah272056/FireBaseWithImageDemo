@@ -65,5 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(intent,IMAGE_REQUEST);
     }
 
-  
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==IMAGE_REQUEST && resultCode==RESULT_OK && data!=null
+                && data.getData()!=null){
+            imageUri=data.getData();
+            Picasso.with(MainActivity.this).load(imageUri).into(imageView);
+        }
+    }
 }
