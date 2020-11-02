@@ -71,7 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             openImageFileChooser();
             break;
         case R.id.saveImageButtonId:
-            saveData();
+            if (uploadTask!=null && uploadTask.isInProgress()){
+                Toast.makeText(this, "Image uploading ", Toast.LENGTH_SHORT).show();
+            }else {
+                saveData();
+            }
+
             break;
         case  R.id.displayImageButtonId:
 
