@@ -34,7 +34,7 @@ public class ImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image);
         recyclerView=findViewById(R.id.recyclerviewId);
         recyclerView.setHasFixedSize(true);
-        progressBar=findViewById(R.id.progressbarId);
+        progressBar=findViewById(R.id.imageProgressBar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         uploadList=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("Upload");
@@ -47,7 +47,7 @@ public class ImageActivity extends AppCompatActivity {
                 }
                 myAdapter=new MyAdapter(ImageActivity.this,uploadList);
                 recyclerView.setAdapter(myAdapter);
-                progressBar.setVisibility(View.INVISIBLE);
+               progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
