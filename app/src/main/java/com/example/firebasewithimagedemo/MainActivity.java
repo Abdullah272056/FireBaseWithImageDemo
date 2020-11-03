@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
                         while (!uriTask.isSuccessful());
                         Uri downLoadUri=uriTask.getResult();
-                        
+
                 Upload upload=new Upload(imageName,
                         downLoadUri.toString());
 
