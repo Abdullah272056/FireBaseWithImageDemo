@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,15 +46,14 @@ public class ImageActivity extends AppCompatActivity {
                     uploadList.add(upload);
                 }
                 myAdapter=new MyAdapter(ImageActivity.this,uploadList);
-
+                recyclerView.setAdapter(myAdapter);
                 progressBar.setVisibility(View.INVISIBLE);
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(ImageActivity.this, "Error: "+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
