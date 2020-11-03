@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -32,12 +34,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.imageNameTextView.setText(uploadList.get(position).getImageName());
+        Picasso.with(context)
+                .load(uploadList.get(position).getImageUri())
+                .placeholder(R.mipmap.ic_launcher)
+                .fit()
+                .centerCrop()
+                .into(holder.imageView);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return uploadList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
