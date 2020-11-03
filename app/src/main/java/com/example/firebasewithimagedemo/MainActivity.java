@@ -76,10 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else {
                 saveData();
             }
-
             break;
         case  R.id.displayImageButtonId:
-
             break;
     }
     }
@@ -125,9 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 });
-
-
-
+        
 
     }
 
