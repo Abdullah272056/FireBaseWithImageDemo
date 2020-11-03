@@ -3,7 +3,9 @@ package com.example.firebasewithimagedemo;
 import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -60,12 +62,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             imageView=itemView.findViewById(R.id.cardImageViewId);
             imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
-
+            
         }
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-           
+            menu.setHeaderTitle("Select The Action");
+           MenuItem do_any_taskTack =menu.add(Menu.NONE, 1, 1, "Do any Task");//groupId, itemId, order, title
+            MenuItem delete= menu.add(Menu.NONE, 2,2, "Delete");
         }
     }
 }
