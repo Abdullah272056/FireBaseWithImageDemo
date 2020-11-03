@@ -54,7 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, com.example.firebasewithimagedemo.MyViewHolder {
         ImageView imageView;
         TextView imageNameTextView;
 
@@ -70,6 +70,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             menu.setHeaderTitle("Select The Action");
            MenuItem do_any_taskTack =menu.add(Menu.NONE, 1, 1, "Do any Task");//groupId, itemId, order, title
             MenuItem delete= menu.add(Menu.NONE, 2,2, "Delete");
+            do_any_taskTack.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
+            delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
         }
+
     }
 }
