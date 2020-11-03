@@ -44,6 +44,7 @@ public class ImageActivity extends AppCompatActivity {
                     Upload upload=dataSnapshot.getValue(Upload.class);
                     uploadList.add(upload);
                 }
+                myAdapter=new MyAdapter(ImageActivity.this,uploadList);
 
                 progressBar.setVisibility(View.INVISIBLE);
 
