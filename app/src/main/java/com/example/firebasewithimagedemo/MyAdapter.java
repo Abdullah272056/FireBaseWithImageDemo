@@ -1,6 +1,7 @@
 package com.example.firebasewithimagedemo;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,7 +22,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater layoutInflater=LayoutInflater.from(context);
+        View view=layoutInflater.inflate(R.layout.item_layout,parent,false);
+        return new MyViewHolder(view);
     }
 
     @Override
