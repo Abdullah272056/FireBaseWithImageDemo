@@ -1,7 +1,9 @@
 package com.example.firebasewithimagedemo;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -42,12 +44,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 .centerCrop()
                 .into(holder.imageView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, uploadList.get(position).getImageName(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -56,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder  {
         ImageView imageView;
         TextView imageNameTextView;
 
@@ -64,6 +60,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             imageView=itemView.findViewById(R.id.cardImageViewId);
             imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
+
         }
+
+
     }
 }

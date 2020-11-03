@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -36,6 +38,7 @@ public class ImageActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         progressBar=findViewById(R.id.imageProgressBar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         uploadList=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("Upload");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,4 +60,6 @@ public class ImageActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
