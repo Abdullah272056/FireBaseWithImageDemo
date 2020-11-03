@@ -62,7 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             imageView=itemView.findViewById(R.id.cardImageViewId);
             imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
-            
+            itemView.setOnCreateContextMenuListener(this);
         }
 
         @Override
