@@ -1,9 +1,12 @@
 package com.example.firebasewithimagedemo;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,8 +41,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView imageNameTextView;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageView=itemView.findViewById(R.id.cardTextViewId);
+            imageNameTextView=itemView.findViewById(R.id.cardImageViewId);
         }
     }
 }
