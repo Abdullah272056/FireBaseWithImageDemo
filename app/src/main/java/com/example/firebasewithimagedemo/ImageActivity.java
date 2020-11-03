@@ -40,7 +40,10 @@ public class ImageActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Upload upload=dataSnapshot.getValue(Upload.class);
+                    uploadList.add(upload);
+                }
 
                 progressBar.setVisibility(View.INVISIBLE);
 
@@ -48,7 +51,7 @@ public class ImageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                
+
             progressBar.setVisibility(View.INVISIBLE);
             }
         });
