@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         // Get a URL to the uploaded content
                         Toast.makeText(MainActivity.this, "Image is stored successful", Toast.LENGTH_SHORT).show();
 
-                UploadModelClass upload=new UploadModelClass(imageName,
+                Upload upload=new Upload(imageName,
                         taskSnapshot.getStorage().getDownloadUrl().toString());
                 String uploadId=databaseReference.push().getKey();
                 databaseReference.child(uploadId).setValue(upload);

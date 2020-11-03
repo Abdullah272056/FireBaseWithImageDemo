@@ -1,7 +1,6 @@
 package com.example.firebasewithimagedemo;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,9 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
-    private List<UploadModelClass> uploadList;
+    private List<Upload> uploadList;
 
-    public MyAdapter(Context context, List<UploadModelClass> uploadList) {
+    public MyAdapter(Context context, List<Upload> uploadList) {
         this.context = context;
         this.uploadList = uploadList;
     }

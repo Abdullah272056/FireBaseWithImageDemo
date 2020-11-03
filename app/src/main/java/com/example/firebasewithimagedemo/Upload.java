@@ -1,13 +1,13 @@
 package com.example.firebasewithimagedemo;
 
-public class UploadModelClass {
+public class Upload {
     String imageName;
     String imageUri;
 
-    public UploadModelClass() {
+    public Upload() {
     }
 
-    public UploadModelClass(String imageName, String imageUri) {
+    public Upload(String imageName, String imageUri) {
         this.imageName = imageName;
         this.imageUri = imageUri;
     }
