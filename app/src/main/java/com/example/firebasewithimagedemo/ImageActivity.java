@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +25,7 @@ public class ImageActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     List<Upload>uploadList;
     RecyclerView recyclerView;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class ImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image);
         recyclerView=findViewById(R.id.recyclerviewId);
         recyclerView.setHasFixedSize(true);
+        progressBar=findViewById(R.id.progressbarId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         uploadList=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("Upload");
@@ -37,11 +41,15 @@ public class ImageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+
+                progressBar.setVisibility(View.INVISIBLE);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                
+            progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }
