@@ -57,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder  {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
         TextView imageNameTextView;
 
@@ -65,12 +65,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             imageView=itemView.findViewById(R.id.cardImageViewId);
             imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
+            itemView.setOnClickListener(this);
 
         }
 
 
 
-
+        @Override
+        public void onClick(View v) {
+            if (listener!=null){
+                int position=getAdapterPosition();
+                if (position!=RecyclerView.NO_POSITION){
+                    listener.onItemClick(position);
+                }
+            }
+        }
     }
 
     public  interface onItemClickListener{
