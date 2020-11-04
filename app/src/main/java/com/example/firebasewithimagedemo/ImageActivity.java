@@ -51,7 +51,13 @@ public class ImageActivity extends AppCompatActivity {
                 myAdapter=new MyAdapter(ImageActivity.this,uploadList);
                 recyclerView.setAdapter(myAdapter);
 
-               
+                myAdapter.setOnItemClickListener(new MyAdapter.onItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        String name=uploadList.get(position).getImageName();
+                        Toast.makeText(ImageActivity.this, name+"is called"+position, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
                progressBar.setVisibility(View.INVISIBLE);
