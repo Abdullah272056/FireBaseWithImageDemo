@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +58,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnCreateContextMenuListener{
         ImageView imageView;
         TextView imageNameTextView;
 
@@ -66,6 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             imageView=itemView.findViewById(R.id.cardImageViewId);
             imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
             itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
 
         }
 
@@ -80,10 +83,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 }
             }
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.setHeaderTitle("Choose an action");
+            MenuItem doAnyTask=menu.add(Menu.NONE,1,1,"do any task");
+            MenuItem delete=menu.add(Menu.NONE,2,2,"delete");
+
+        }
+
+
     }
 
     public  interface onItemClickListener{
         void onItemClick(int position);
+       
 
     }
     public void setOnItemClickListener(onItemClickListener listener){

@@ -57,6 +57,8 @@ public class ImageActivity extends AppCompatActivity {
                         String name=uploadList.get(position).getImageName();
                         Toast.makeText(ImageActivity.this, name+"is called"+position, Toast.LENGTH_SHORT).show();
                     }
+
+
                 });
 
 
