@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
     private List<Upload> uploadList;
 
+
     public MyAdapter(Context context, List<Upload> uploadList) {
         this.context = context;
         this.uploadList = uploadList;
@@ -31,8 +31,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater=LayoutInflater.from(context);
-        View view=layoutInflater.inflate(R.layout.item_layout,parent,false);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -54,37 +54,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, com.example.firebasewithimagedemo.MyViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView imageNameTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.cardImageViewId);
-            imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
-            itemView.setOnCreateContextMenuListener(this);
+            imageView = itemView.findViewById(R.id.cardImageViewId);
+            imageNameTextView = itemView.findViewById(R.id.cardTextViewId);
+
+
         }
 
-        @Override
-        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select The Action");
-           MenuItem do_any_taskTack =menu.add(Menu.NONE, 1, 1, "Do any Task");//groupId, itemId, order, title
-            MenuItem delete= menu.add(Menu.NONE, 2,2, "Delete");
-            do_any_taskTack.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            });
-            delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            });
-        }
+//
+
 
     }
 }

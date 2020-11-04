@@ -50,6 +50,10 @@ public class ImageActivity extends AppCompatActivity {
                 }
                 myAdapter=new MyAdapter(ImageActivity.this,uploadList);
                 recyclerView.setAdapter(myAdapter);
+
+               
+
+
                progressBar.setVisibility(View.INVISIBLE);
             }
 
