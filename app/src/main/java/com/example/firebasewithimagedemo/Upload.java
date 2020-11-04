@@ -1,8 +1,20 @@
 package com.example.firebasewithimagedemo;
 
+import com.google.firebase.database.Exclude;
+
 public class Upload {
     String imageName;
     String imageUri;
+
+    String key;
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+    @Exclude
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public Upload() {
     }
