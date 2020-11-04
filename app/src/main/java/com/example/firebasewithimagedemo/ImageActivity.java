@@ -13,11 +13,14 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class ImageActivity extends AppCompatActivity {
     List<Upload>uploadList;
     RecyclerView recyclerView;
     ProgressBar progressBar;
+    FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +44,19 @@ public class ImageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         uploadList=new ArrayList<>();
+
+        firebaseStorage=FirebaseStorage.getInstance();
+
         databaseReference= FirebaseDatabase.getInstance().getReference("Upload");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //duplicate value remove
+                uploadList.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Upload upload=dataSnapshot.getValue(Upload.class);
+                    assert upload != null;
+                    upload.setKey(dataSnapshot.getKey());
                     uploadList.add(upload);
                 }
                 myAdapter=new MyAdapter(ImageActivity.this,uploadList);
@@ -66,8 +77,19 @@ public class ImageActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(int position) {
-                        Toast.makeText(ImageActivity.this, "delete"+position, Toast.LENGTH_SHORT).show();
+                        //get for selected item position
+                        Upload selectItem=uploadList.get(position);
 
+                        //get for selected item key
+                        final String key=selectItem.getKey();
+
+                        StorageReference storageReference=firebaseStorage.getReferenceFromUrl(selectItem.getImageUri());
+                            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                            databaseReference.child(key).removeValue();
+                                }
+                            });
                     }
                 });
 
