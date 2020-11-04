@@ -58,7 +58,17 @@ public class ImageActivity extends AppCompatActivity {
                         Toast.makeText(ImageActivity.this, name+"is called"+position, Toast.LENGTH_SHORT).show();
                     }
 
+                    @Override
+                    public void doAnuTask(int position) {
+                        Toast.makeText(ImageActivity.this, "do any task selected"+position, Toast.LENGTH_SHORT).show();
 
+                    }
+
+                    @Override
+                    public void delete(int position) {
+                        Toast.makeText(ImageActivity.this, "delete"+position, Toast.LENGTH_SHORT).show();
+
+                    }
                 });
 
 
