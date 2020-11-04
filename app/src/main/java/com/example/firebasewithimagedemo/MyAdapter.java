@@ -21,6 +21,7 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
     private List<Upload> uploadList;
+    private onItemClickListener listener;
 
 
     public MyAdapter(Context context, List<Upload> uploadList) {
@@ -31,8 +32,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
+        LayoutInflater layoutInflater=LayoutInflater.from(context);
+        View view=layoutInflater.inflate(R.layout.item_layout,parent,false);
         return new MyViewHolder(view);
     }
 
@@ -47,6 +48,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 .into(holder.imageView);
 
 
+
+
     }
 
     @Override
@@ -54,20 +57,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder  {
         ImageView imageView;
         TextView imageNameTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.cardImageViewId);
-            imageNameTextView = itemView.findViewById(R.id.cardTextViewId);
-
+            imageView=itemView.findViewById(R.id.cardImageViewId);
+            imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
 
         }
 
-//
+
 
 
     }
+
+    public  interface onItemClickListener{
+        void onItemClick(int position);
+
+    }
+    public void setOnItemClickListener(onItemClickListener listener){
+        this.listener=listener;
+    }
+
 }
